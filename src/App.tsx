@@ -1,7 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import SignIn from "./Pages/SignIn";
-import FitTrack from "./Pages/FitTrack";
-import Body from "./Pages/Body";
+
+import SignIn from "./pages/SignIn";
+import FitTrack from "./pages/FitTrack";
+import Body from "./pages/Body";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,4 +22,5 @@ const router = createBrowserRouter([
 function App() {
   return <RouterProvider router={router} />;
 }
+
 export default App;
