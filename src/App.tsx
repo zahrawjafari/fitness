@@ -5,6 +5,7 @@ import Age from "./pages/Age";
 import FitTrack from "./pages/FitTrack";
 import Body from "./pages/Body";
 import Fit from "./pages/Fit";
+import Dashboard from "./pages/Dashboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/fit",
     Component: Fit,
+  },
+  {
+    path: "/dashboard",
+    Component: Dashboard,
   },
 ]);
 
