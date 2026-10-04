@@ -91,13 +91,18 @@ function Body() {
           />
         </div>
         <div className="flex justify-end gap-4">
-          <button className="w-[144px] h-[48px] bg-[#F1F5F9] text-gray-700 rounded-2xl">
-            Back
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="mb-6 flex items-center gap-2 text-gray-600 bg-[#F1F5F9] w-[144px] h-[48px] text-sm font-medium cursor-pointer hover:text-[#00A63E] transition rounded-2xl  justify-center"
+          >
+            ← Back
           </button>
           <button
             type="button"
             onClick={() => navigate("/Fit")}
-            className="w-[172px] h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition">
+            className="w-[172px] h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition"
+          >
             Continue
           </button>
         </div>
