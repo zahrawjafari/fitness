@@ -33,21 +33,25 @@ function Age() {
           <div className="flex-1 h-1 rounded-[10px] bg-gray-200" />
         </div>
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-[10px]">
-            <div className="w-[44px] h-[44px] rounded-xl bg-[#ECFDF5] flex items-center justify-center border border-[#D1FAE5]">
+          <div className="flex items-center gap-3">
+            <div className="w-[44px] h-[44px] shrink-0 rounded-xl bg-[#ECFDF5] flex items-center justify-center border border-[#D1FAE5]">
               <UserRound
                 size={23}
                 strokeWidth={2.2}
                 className="text-[#00A63E]"
               />
             </div>
-            <h2 className="m-0 text-[#0F172B] font-bold leading-9">
-              How old are you?
-            </h2>
+
+            <div className="h-[44px] flex flex-col justify-center">
+              <h2 className="m-0 text-[#0F172B] text-[20px] font-bold leading-[22px]">
+                How old are you?
+              </h2>
+
+              <p className="m-0 text-[#64748B] text-[13px] leading-[20px]">
+                This helps us calculate your needs
+              </p>
+            </div>
           </div>
-          <p className="m-0 ml-[56px] text-[#64748B] text-sm leading-[22px]">
-            This helps us calculate your needs.
-          </p>
         </div>
         <div className="mb-6">
           <label
