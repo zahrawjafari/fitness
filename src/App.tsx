@@ -4,6 +4,7 @@ import SignIn from "./pages/SignIn";
 import Age from "./pages/Age";
 import FitTrack from "./pages/FitTrack";
 import Body from "./pages/Body";
+import Fit from "./pages/Fit";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/age",
     Component: Age,
+  },
+  {
+    path: "/fit",
+    Component: Fit,
   },
 ]);
 

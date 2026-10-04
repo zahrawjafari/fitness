@@ -90,12 +90,14 @@ function Body() {
             className="w-full h-12 box-border border-2 border-gray-300 rounded-lg bg-white px-[14px] text-[#0F172B] text-sm outline-none focus:border-[#00A63E]"
           />
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end gap-4">
+          <button className="w-[144px] h-[48px] bg-[#F1F5F9] text-gray-700 rounded-2xl">
+            Back
+          </button>
           <button
             type="button"
             onClick={() => navigate("/Fit")}
-            className="w-[172px] h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition"
-          >
+            className="w-[172px] h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition">
             Continue
           </button>
         </div>
