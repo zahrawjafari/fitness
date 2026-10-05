@@ -1,15 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-
 import SignIn from "./pages/SignIn";
 import Age from "./pages/Age";
 import FitTrack from "./pages/FitTrack";
 import Body from "./pages/Body";
 import Fit from "./pages/Fit";
 import Dashboard from "./pages/Dashboard";
+import Signup from "./pages/Signup";
+import Home from "./components/Home";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: SignIn,
+    Component: Signup,
   },
   {
     path: "/fittrack",
@@ -31,10 +32,13 @@ const router = createBrowserRouter([
     path: "/dashboard",
     Component: Dashboard,
   },
+  {
+    path: "/signin",
+    Component: SignIn,
+  },
 ]);
 
 function App() {
   return <RouterProvider router={router} />;
 }
-
 export default App;

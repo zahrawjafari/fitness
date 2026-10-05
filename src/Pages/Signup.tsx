@@ -1,36 +1,28 @@
 import { FormEvent, useState } from "react";
 import { AtSign, Mail, Lock, Eye, EyeOff } from "lucide-react";
-import { Link, useNavigate } from "react-router";
-
+import { useNavigate } from "react-router";
 function Signup() {
   const navigate = useNavigate();
-
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!username || !email || !password) {
       return;
     }
-
     navigate("/age");
   };
-
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-white px-6">
       <div className="w-full max-w-[400px] mx-auto">
         <div className="mb-8">
           <h1 className="m-0 text-[#0F172B] text-[28px] font-bold">Sign up</h1>
-
           <p className="m-0 mt-2 text-[#64748B] text-sm">
             Please enter your details to create an account.
           </p>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label
@@ -39,13 +31,11 @@ function Signup() {
             >
               Username
             </label>
-
             <div className="relative">
               <AtSign
                 size={20}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]"
               />
-
               <input
                 id="username"
                 type="text"
@@ -56,7 +46,6 @@ function Signup() {
               />
             </div>
           </div>
-
           <div>
             <label
               htmlFor="email"
@@ -64,13 +53,11 @@ function Signup() {
             >
               Email
             </label>
-
             <div className="relative">
               <Mail
                 size={20}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]"
               />
-
               <input
                 id="email"
                 type="email"
@@ -81,7 +68,6 @@ function Signup() {
               />
             </div>
           </div>
-
           <div>
             <label
               htmlFor="password"
@@ -89,13 +75,11 @@ function Signup() {
             >
               Password
             </label>
-
             <div className="relative">
               <Lock
                 size={20}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]"
               />
-
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
@@ -104,7 +88,6 @@ function Signup() {
                 placeholder="Enter your password"
                 className="w-full h-12 box-border border-2 border-gray-300 rounded-lg bg-white pl-12 pr-12 text-[#0F172B] text-sm outline-none focus:border-[#00A63E]"
               />
-
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -114,29 +97,26 @@ function Signup() {
               </button>
             </div>
           </div>
-
           <button
             type="submit"
+            onClick={() => navigate("/Age")}
             className="w-full h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition"
           >
             Sign Up
           </button>
         </form>
-
         <div className="text-center mt-6">
           <p className="text-[#64748B] text-sm">
             Already have an account?{" "}
-            <Link
-              to="/"
-              className="mt-2 text-[#00A63E] text-sm font-semibold cursor-pointer hover:underline"
-            >
-              Login
-            </Link>
+            <a>
+              <span className="mt-2 text-[#00A63E] text-sm font-semibold cursor-pointer hover:underline">
+                Login
+              </span>
+            </a>
           </p>
         </div>
       </div>
     </main>
   );
 }
-
 export default Signup;
