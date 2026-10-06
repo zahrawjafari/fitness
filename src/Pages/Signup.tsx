@@ -1,47 +1,45 @@
+
 import { FormEvent, useState } from "react";
 import { AtSign, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import api from "../services/api";
-
 function Signup() {
   const navigate = useNavigate();
-
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [error, setError] = useState("");
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setError("");
     if (!username || !email || !password) {
+      setError("Please fill in all fields.");
       return;
     }
-
     try {
       await api.post("/users", {
-        username: username,
-        email: email,
-        password: password,
+        username,
+        email,
+        password,
       });
-
-      navigate("/");
+      navigate("/age");
     } catch (error) {
       console.log("Signup error:", error);
+      setError("Something went wrong. Please try again.");
     }
   };
-
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-white px-6">
       <div className="w-full max-w-[400px] mx-auto">
         <div className="mb-8">
-          <h1 className="m-0 text-[#0F172B] text-[28px] font-bold">Sign up</h1>
-
+          <h1 className="m-0 text-[#0F172B] text-[28px] font-bold">
+            Sign up
+          </h1>
           <p className="m-0 mt-2 text-[#64748B] text-sm">
             Please enter your details to create an account.
           </p>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label
@@ -56,7 +54,6 @@ function Signup() {
                 size={20}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]"
               />
-
               <input
                 id="username"
                 type="text"
@@ -67,7 +64,6 @@ function Signup() {
               />
             </div>
           </div>
-
           <div>
             <label
               htmlFor="email"
@@ -75,13 +71,11 @@ function Signup() {
             >
               Email
             </label>
-
             <div className="relative">
               <Mail
                 size={20}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]"
               />
-
               <input
                 id="email"
                 type="email"
@@ -92,7 +86,6 @@ function Signup() {
               />
             </div>
           </div>
-
           <div>
             <label
               htmlFor="password"
@@ -106,7 +99,6 @@ function Signup() {
                 size={20}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]"
               />
-
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
@@ -125,7 +117,11 @@ function Signup() {
               </button>
             </div>
           </div>
-
+          {error && (
+            <p className="text-red-500 text-sm">
+              {error}
+            </p>
+          )}
           <button
             type="submit"
             className="w-full h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition"
@@ -133,7 +129,6 @@ function Signup() {
             Sign Up
           </button>
         </form>
-
         <div className="text-center mt-6">
           <p className="text-[#64748B] text-sm">
             Already have an account?{" "}
@@ -149,5 +144,4 @@ function Signup() {
     </main>
   );
 }
-
 export default Signup;

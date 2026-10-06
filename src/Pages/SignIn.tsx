@@ -1,10 +1,9 @@
 import { FormEvent, useState } from "react";
-import { AtSign, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import api from "../services/api";
 function SignIn() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +11,7 @@ function SignIn() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
-    if (!username || !email || !password) {
+    if (!email || !password) {
       setError("Please fill in all fields.");
       return;
     }
@@ -21,16 +20,14 @@ function SignIn() {
       const users = response.data;
       const user = users.find(
         (item: {
-          username: string;
           email: string;
           password: string;
         }) =>
-          item.username === username &&
           item.email === email &&
           item.password === password
       );
       if (!user) {
-        setError("Username, email or password is incorrect.");
+        setError("Email or password is incorrect.");
         return;
       }
       navigate("/home");
@@ -39,6 +36,7 @@ function SignIn() {
       setError("Something went wrong. Please try again.");
     }
   };
+
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-white px-6">
       <div className="w-full max-w-[400px] mx-auto">
