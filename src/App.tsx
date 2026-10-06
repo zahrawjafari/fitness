@@ -13,6 +13,14 @@ const router = createBrowserRouter([
     Component: Signup,
   },
   {
+    path: "/signin",
+    Component: SignIn,
+  },
+  {
+    path: "/home",
+    Component: Home,
+  },
+  {
     path: "/fittrack",
     Component: FitTrack,
   },
@@ -32,12 +40,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     Component: Dashboard,
   },
-  {
-    path: "/signin",
-    Component: SignIn,
-  },
 ]);
-
 function App() {
   return <RouterProvider router={router} />;
 }

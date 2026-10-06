@@ -35,9 +35,7 @@ function Signup() {
     <main className="min-h-screen w-full flex items-center justify-center bg-white px-6">
       <div className="w-full max-w-[400px] mx-auto">
         <div className="mb-8">
-          <h1 className="m-0 text-[#0F172B] text-[28px] font-bold">
-            Sign up
-          </h1>
+          <h1 className="m-0 text-[#0F172B] text-[28px] font-bold">Sign up</h1>
 
           <p className="m-0 mt-2 text-[#64748B] text-sm">
             Please enter your details to create an account.
@@ -140,7 +138,7 @@ function Signup() {
           <p className="text-[#64748B] text-sm">
             Already have an account?{" "}
             <Link
-              to="/"
+              to="/signin"
               className="text-[#00A63E] text-sm font-semibold cursor-pointer hover:underline"
             >
               Login
