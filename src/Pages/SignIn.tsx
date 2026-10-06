@@ -114,7 +114,6 @@ function Signup() {
               </button>
             </div>
           </div>
-
           <button
             type="submit"
             className="w-full h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition"
