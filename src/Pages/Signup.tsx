@@ -1,22 +1,30 @@
 import { FormEvent, useState } from "react";
 import { AtSign, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router";
+
 function Signup() {
   const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
-    if (!username || !email || !password) {
+
+    if (!username.trim() || !email.trim() || !password) {
       setError("Please fill in all fields.");
       return;
     }
+
+    localStorage.setItem("username", username.trim());
+
     navigate("/age");
   };
+
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-white px-6">
       <div className="w-full max-w-[400px] mx-auto">
@@ -27,6 +35,7 @@ function Signup() {
             Please enter your details to create an account.
           </p>
         </div>
+
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label
@@ -77,6 +86,7 @@ function Signup() {
               />
             </div>
           </div>
+
           <div>
             <label
               htmlFor="password"
@@ -90,6 +100,7 @@ function Signup() {
                 size={20}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]"
               />
+
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
@@ -98,6 +109,7 @@ function Signup() {
                 placeholder="Enter your password"
                 className="w-full h-12 box-border border-2 border-gray-300 rounded-lg bg-white pl-12 pr-12 text-[#0F172B] text-sm outline-none focus:border-[#00A63E]"
               />
+
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -107,7 +119,9 @@ function Signup() {
               </button>
             </div>
           </div>
+
           {error && <p className="text-red-500 text-sm">{error}</p>}
+
           <button
             type="submit"
             className="w-full h-12 border-2 border-[#00A63E] rounded-lg bg-[#00A63E] text-white text-sm font-semibold cursor-pointer hover:bg-green-600 transition"
@@ -115,6 +129,7 @@ function Signup() {
             Sign Up
           </button>
         </form>
+
         <div className="text-center mt-6">
           <p className="text-[#64748B] text-sm">
             Already have an account?{" "}
@@ -130,4 +145,5 @@ function Signup() {
     </main>
   );
 }
+
 export default Signup;
