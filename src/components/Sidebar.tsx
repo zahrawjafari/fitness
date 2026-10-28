@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { Home, LayoutDashboard, Apple, Activity, User } from "lucide-react";
+import { Home, LayoutDashboard, Utensils, Activity, User } from "lucide-react";
 import { IoAccessibilityOutline } from "react-icons/io5";
 function Sidebar() {
   const menuItems = [
@@ -16,7 +16,7 @@ function Sidebar() {
     {
       to: "/food",
       label: "Food",
-      icon: Apple,
+      icon: Utensils,
     },
     {
       to: "/activity",
@@ -31,6 +31,7 @@ function Sidebar() {
   ];
   return (
     <aside className="fixed left-0 top-0 z-50 flex h-screen w-[250px] flex-col border-r border-[#E7EDE4] bg-white px-5 py-8">
+      {/* Logo */}
       <div className="mb-10 px-3">
         <div className="flex items-center gap-3">
           <div className="flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-[#00A63E]">
@@ -38,7 +39,11 @@ function Sidebar() {
           </div>
           <h1 className="m-0 text-[26px] font-bold text-[#0F172B]">FitTrack</h1>
         </div>
+        <p className="mt-2 text-xs text-[#8A918C]">
+          Your daily fitness tracker
+        </p>
       </div>
+      {/* Navigation */}
       <nav className="flex flex-col gap-2">
         {menuItems.map((item) => {
           const Icon = item.icon;

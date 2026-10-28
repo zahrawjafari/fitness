@@ -36,7 +36,6 @@ function SignIn() {
       setError("Something went wrong. Please try again.");
     }
   };
-
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-white px-6">
       <div className="w-full max-w-[400px] mx-auto">
