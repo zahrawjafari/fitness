@@ -6,6 +6,7 @@ import {
   Play,
   Target,
   Utensils,
+  Scale,
 } from "lucide-react";
 
 import { useNavigate } from "react-router";
@@ -36,6 +37,38 @@ function Home() {
 
   const username = localStorage.getItem("username") || "User";
 
+  const height = Number(localStorage.getItem("height"));
+  const weight = Number(localStorage.getItem("weight"));
+
+  const hasBodyData =
+    height > 0 &&
+    weight > 0 &&
+    Number.isFinite(height) &&
+    Number.isFinite(weight);
+
+  const heightInMeters = height > 3 ? height / 100 : height;
+
+  const bmi =
+    hasBodyData && heightInMeters > 0
+      ? (weight / (heightInMeters * heightInMeters)).toFixed(1)
+      : "--";
+
+  const bmiNumber = Number(bmi);
+
+  let bmiCategory = "Enter your height and weight";
+
+  if (bmi !== "--") {
+    if (bmiNumber < 18.5) {
+      bmiCategory = "Underweight";
+    } else if (bmiNumber < 25) {
+      bmiCategory = "Normal weight";
+    } else if (bmiNumber < 30) {
+      bmiCategory = "Overweight";
+    } else {
+      bmiCategory = "Obesity range";
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#F7F8F5] text-[#0F172B]">
       <Sidebar />
@@ -44,13 +77,17 @@ function Home() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-extrabold">Welcome back</h1>
+
           <p className="mt-2 text-[#64748B]">Hi there! 👋 {username}</p>
+
           <p className="mt-1 text-sm text-[#64748B]">
             {username} 💪 Ready to crush today? Start logging!
           </p>
         </div>
+
         {/* Statistics */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {/* Calories */}
           <div className="rounded-2xl bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFF1D6]">
@@ -64,6 +101,7 @@ function Home() {
             <p className="mt-1 text-xs text-[#8A918C]">kcal</p>
           </div>
 
+          {/* Steps */}
           <div className="rounded-2xl bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8F7D2]">
@@ -77,6 +115,7 @@ function Home() {
             <p className="mt-1 text-xs text-[#8A918C]">steps</p>
           </div>
 
+          {/* Heart Rate */}
           <div className="rounded-2xl bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FDE8E8]">
@@ -88,6 +127,20 @@ function Home() {
             <p className="text-sm text-[#8A918C]">Heart Rate</p>
             <h2 className="mt-1 text-2xl font-bold">72</h2>
             <p className="mt-1 text-xs text-[#8A918C]">resting</p>
+          </div>
+
+          {/* BMI */}
+          <div className="rounded-2xl bg-white p-6 shadow-sm">
+            <div className="mb-4 flex items-center justify-between">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8F7D2]">
+                <Scale size={22} className="text-[#00A63E]" />
+              </div>
+              <span className="text-sm text-[#8A918C]">BMI</span>
+            </div>
+
+            <p className="text-sm text-[#8A918C]">Body Mass Index</p>
+            <h2 className="mt-1 text-2xl font-bold">{bmi}</h2>
+            <p className="mt-1 text-xs text-[#8A918C]">{bmiCategory}</p>
           </div>
         </div>
 
@@ -230,6 +283,7 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {/* Exercise */}
             <div className="rounded-2xl bg-white p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E8F7D2]">
@@ -250,6 +304,7 @@ function Home() {
               </button>
             </div>
 
+            {/* Nutrition */}
             <div className="rounded-2xl bg-white p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FFF1D6]">
