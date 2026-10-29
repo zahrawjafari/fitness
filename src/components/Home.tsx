@@ -44,14 +44,11 @@ function Home() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-extrabold">Welcome back</h1>
-
           <p className="mt-2 text-[#64748B]">Hi there! 👋 {username}</p>
-
           <p className="mt-1 text-sm text-[#64748B]">
             {username} 💪 Ready to crush today? Start logging!
           </p>
         </div>
-
         {/* Statistics */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           <div className="rounded-2xl bg-white p-6 shadow-sm">
@@ -280,5 +277,4 @@ function Home() {
     </div>
   );
 }
-
 export default Home;
