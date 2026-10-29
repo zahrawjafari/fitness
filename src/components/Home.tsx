@@ -295,7 +295,6 @@ function Home() {
                   <p className="text-sm text-[#8A918C]">30 minutes today</p>
                 </div>
               </div>
-
               <button
                 onClick={() => navigate("/activity")}
                 className="mt-5 w-full rounded-xl bg-[#00A63E] py-3 text-sm font-semibold text-white transition hover:bg-[#008F36]"
@@ -303,7 +302,6 @@ function Home() {
                 Start
               </button>
             </div>
-
             {/* Nutrition */}
             <div className="rounded-2xl bg-white p-6 shadow-sm">
               <div className="flex items-center gap-4">
